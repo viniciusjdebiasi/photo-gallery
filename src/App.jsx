@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useRef } from "react";
+import { Link } from "lucide-react";
 import { motion } from "framer-motion";
 import { ImagesSlider } from "./components/ui/images-slider";
 import TypingAnimation from "@/components/ui/typing-animation.tsx";
@@ -12,6 +13,10 @@ import "aos/dist/aos.css";
 
 import "./App.css";
 
+import picture1 from "./assets/picture1.jpg";
+import picture2 from "./assets/picture2.jpg";
+import picture3 from "./assets/picture3.jpg";
+
 function App() {
   const images = [
     "https://images.unsplash.com/photo-1485433592409-9018e83a1f0d?q=80&w=1814&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -21,9 +26,9 @@ function App() {
 
   useEffect(() => {
     AOS.init({
-      duration: 1000, // Duração da animação em ms
-      offset: 100, // Offset de scroll para iniciar a animação
-      /*once: true, */// Se true, a animação ocorre apenas uma vez ao rolar para baixo
+      duration: 800, // Duração da animação em ms
+      offset: 10, // Offset de scroll para iniciar a animação
+      once: true, // Se true, a animação ocorre apenas uma vez ao rolar para baixo
     });
   }, []);
 
@@ -72,8 +77,16 @@ function App() {
         <div className="container-search" ref={targetRef}>
           <div className="search">
             <section className="container-input">
-              <input type="text" className="input-search" placeholder="Search your images" data-aos="fade-left" />
-              <MagnifyingGlassIcon className="icon-search"  data-aos="fade-left" />
+              <input
+                type="text"
+                className="input-search"
+                placeholder="Search your images"
+                data-aos="fade-left"
+              />
+              <MagnifyingGlassIcon
+                className="icon-search"
+                data-aos="fade-left"
+              />
             </section>
             <section className="search-options" data-aos="fade-right">
               <a href="" className="link-page">
@@ -89,7 +102,33 @@ function App() {
           </div>
         </div>
 
-        <div className="container-images"></div>
+        <div className="container-images">
+          <div className="images">
+            <section className="image-card" data-aos="fade-up">
+              <img src={picture2} alt="" className="image-css" />
+              <div className="overlay">
+                <h4>TITULO</h4>
+                <p>DESCRIÇÃO</p>
+              </div>
+            </section>
+
+            <section className="image-card" data-aos="fade-up">
+              <img src={picture1} alt="" className="image-css" />
+              <div className="overlay">
+                <h4>TITULO</h4>
+                <p>DESCRIÇÃO</p>
+              </div>
+            </section>
+
+            <section className="image-card" data-aos="fade-up">
+              <img src={picture3} alt="" className="image-css" />
+              <div className="overlay">
+                <h4>TITULO</h4>
+                <p>DESCRIÇÃO</p>
+              </div>
+            </section>
+          </div>
+        </div>
       </div>
     </>
   );
