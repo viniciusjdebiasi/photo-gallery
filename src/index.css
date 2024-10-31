@@ -9,6 +9,20 @@ body {
   scroll-behavior: smooth
 }
 
+body::-webkit-scrollbar {
+  width: 0.7rem; 
+}
+
+body::-webkit-scrollbar-track {
+  background: #000;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #A9A9A9; 
+  border-radius: 5rem;
+  border: 0.1rem solid white;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

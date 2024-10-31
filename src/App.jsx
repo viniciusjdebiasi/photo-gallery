@@ -1,21 +1,16 @@
 "use client";
 import React, { useEffect, useRef } from "react";
-import { Link } from "lucide-react";
 import { motion } from "framer-motion";
 import { ImagesSlider } from "./components/ui/images-slider";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import TypingAnimation from "@/components/ui/typing-animation.tsx";
 import {
   DoubleArrowDownIcon,
   MagnifyingGlassIcon,
 } from "@radix-ui/react-icons";
-import AOS from "aos";
-import "aos/dist/aos.css";
-
 import "./App.css";
-
-import picture1 from "./assets/picture1.jpg";
-import picture2 from "./assets/picture2.jpg";
-import picture3 from "./assets/picture3.jpg";
+import ImageGallery from "./components-gallery/imageGallery";
 
 function App() {
   const images = [
@@ -28,7 +23,7 @@ function App() {
     AOS.init({
       duration: 800, // Duração da animação em ms
       offset: 10, // Offset de scroll para iniciar a animação
-      once: true, // Se true, a animação ocorre apenas uma vez ao rolar para baixo
+      // once: true,  Se true, a animação ocorre apenas uma vez ao rolar para baixo
     });
   }, []);
 
@@ -103,31 +98,7 @@ function App() {
         </div>
 
         <div className="container-images">
-          <div className="images">
-            <section className="image-card" data-aos="fade-up">
-              <img src={picture2} alt="" className="image-css" />
-              <div className="overlay">
-                <h4>TITULO</h4>
-                <p>DESCRIÇÃO</p>
-              </div>
-            </section>
-
-            <section className="image-card" data-aos="fade-up">
-              <img src={picture1} alt="" className="image-css" />
-              <div className="overlay">
-                <h4>TITULO</h4>
-                <p>DESCRIÇÃO</p>
-              </div>
-            </section>
-
-            <section className="image-card" data-aos="fade-up">
-              <img src={picture3} alt="" className="image-css" />
-              <div className="overlay">
-                <h4>TITULO</h4>
-                <p>DESCRIÇÃO</p>
-              </div>
-            </section>
-          </div>
+          <ImageGallery />
         </div>
       </div>
     </>
