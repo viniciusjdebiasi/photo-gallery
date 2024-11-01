@@ -10,7 +10,7 @@ import {
   MagnifyingGlassIcon,
 } from "@radix-ui/react-icons";
 import "./App.css";
-import ImageGallery from "./components-gallery/imageGallery";
+import ImageGallery from "../public/components-gallery/imageGallery";
 
 function App() {
   const images = [
