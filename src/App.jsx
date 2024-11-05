@@ -4,13 +4,10 @@ import { motion } from "framer-motion";
 import { ImagesSlider } from "./components/ui/images-slider";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import TypingAnimation from "@/components/ui/typing-animation.tsx";
-import {
-  DoubleArrowDownIcon,
-  MagnifyingGlassIcon,
-} from "@radix-ui/react-icons";
+import TypingAnimation from "@/components/ui/typing-animation";
+import { DoubleArrowDownIcon } from "@radix-ui/react-icons";
 import "./App.css";
-import ImageGallery from "../public/components-gallery/imageGallery";
+import ImageGallery from "./components-gallery/imageGallery";
 
 function App() {
   const images = [
@@ -21,15 +18,18 @@ function App() {
 
   useEffect(() => {
     AOS.init({
-      duration: 800, // Duração da animação em ms
-      offset: 10, // Offset de scroll para iniciar a animação
-      // once: true,  Se true, a animação ocorre apenas uma vez ao rolar para baixo
+      duration: 800,
+      offset: 10,
     });
   }, []);
 
   const targetRef = useRef(null);
+
   const Scroll = () => {
-    targetRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (targetRef.current) {
+      const y = targetRef.current.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
   };
 
   return (
@@ -37,17 +37,9 @@ function App() {
       <div>
         <ImagesSlider className="h-[100vh]" images={images}>
           <motion.div
-            initial={{
-              opacity: 0,
-              y: -80,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
-            transition={{
-              duration: 0.6,
-            }}
+            initial={{ opacity: 0, y: -80 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
             className="z-50 flex flex-col justify-center items-center"
           >
             <motion.p>
@@ -69,35 +61,7 @@ function App() {
           </motion.div>
         </ImagesSlider>
 
-        <div className="container-search" ref={targetRef}>
-          <div className="search">
-            <section className="container-input">
-              <input
-                type="text"
-                className="input-search"
-                placeholder="Search your images"
-                data-aos="fade-left"
-              />
-              <MagnifyingGlassIcon
-                className="icon-search"
-                data-aos="fade-left"
-              />
-            </section>
-            <section className="search-options" data-aos="fade-right">
-              <a href="" className="link-page">
-                See all
-              </a>
-              <a href="" className="link-page">
-                Nature
-              </a>
-              <a href="" className="link-page">
-                Others
-              </a>
-            </section>
-          </div>
-        </div>
-
-        <div className="container-images">
+        <div className="container-images" ref={targetRef} id="images">
           <ImageGallery />
         </div>
       </div>
