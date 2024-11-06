@@ -61,9 +61,15 @@ export default function ImageGallery() {
             </button>
             <button
               className="link-page"
-              onClick={() => FilterCategory("others")}
+              onClick={() => FilterCategory("animais")}
             >
-              Others
+              Animals
+            </button>
+            <button
+              className="link-page"
+              onClick={() => FilterCategory("comida")}
+            >
+              Food
             </button>
           </section>
         </div>
@@ -91,7 +97,7 @@ export default function ImageGallery() {
                   alt="Photographer profile"
                   className="img_profile"
                 />
-                <a href={img.profile} target="_blank">
+                <a href={img.profile} target="_blank" className="profile-name">
                   {img.photographer}
                 </a>
               </section>

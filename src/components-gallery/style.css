@@ -20,7 +20,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 5rem 1rem 5rem 1rem;
+    padding: 5rem 1rem 2rem 1rem;
 
 }
 
@@ -57,17 +57,15 @@
 }
 
 .search-options {
-    width: 25rem;
-    max-width: 25rem;
-    height: 3rem;
     display: flex;
     justify-content: space-around;
-    align-items: center;
-    border-radius: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
 .link-page {
     border: 0.1rem solid #A9A9A9;
+    background-color: #fff;
     height: 3rem;
     width: 8rem;
     display: flex;
@@ -83,7 +81,7 @@
 .link-page:hover {
     color: #A9A9A9;
     background-color: #000;
-    transform: translateY(-7px);
+    transform: translateY(-5px);
 }
 
 /* container images */
@@ -93,7 +91,7 @@
     max-height: 36rem;
     height: auto;
     border: 0.1rem solid #A9A9A9;
-    border-radius: 1rem;
+    border-radius: 0.4rem;
     overflow: hidden;
     position: relative;
 }
@@ -151,6 +149,10 @@
 
 .link_profile:hover{
     color: #A9A9A9;
+}
+
+.profile-name {
+    width: 9rem;
 }
 
 .download_button{
