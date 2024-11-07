@@ -5,6 +5,7 @@ import {
   MagnifyingGlassIcon,
 } from "@radix-ui/react-icons";
 import "./style.css";
+import LazyLoad from "react-lazyload";
 import images from "../assets/images";
 
 export default function ImageGallery() {
@@ -76,15 +77,17 @@ export default function ImageGallery() {
       </div>
 
       {imagesGallery.map((img) => (
-        <div className="card-image" key={img.id} data-aos="fade-up">
-          <img className="image_css" src={img.image} alt={img.description} />
+        <div className="card-image" key={img.id} >
+          <LazyLoad height={200} offset={100} className="lazy">
+            <img className="image_css" src={img.image} alt={img.description} data-aos="fade-up" />
+          </LazyLoad>
           <div className="overlay">
             <section>
               <h4>{img.description}</h4>
               <br />
               <section className="container_profile">
                 <SewingPinFilledIcon style={{ color: "red" }} /> &nbsp;
-                <a href={img.mapsLocal} target="_blank">
+                <a href={img.mapsLocal} target="_blank" className="profile-link">
                   {img.local}
                 </a>
               </section>
@@ -97,7 +100,7 @@ export default function ImageGallery() {
                   alt="Photographer profile"
                   className="img_profile"
                 />
-                <a href={img.profile} target="_blank" className="profile-name">
+                <a href={img.profile} target="_blank" className="profile-link">
                   {img.photographer}
                 </a>
               </section>
