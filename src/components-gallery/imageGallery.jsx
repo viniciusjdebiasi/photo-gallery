@@ -75,42 +75,50 @@ export default function ImageGallery() {
           </section>
         </div>
       </div>
+      <LazyLoad height={500} offset={0} className="lazy">
+        {imagesGallery.map((img) => (
+          <div className="card-image" key={img.id} data-aos="fade-up">
+            <img className="image_css" src={img.image} alt={img.description} />
 
-      {imagesGallery.map((img) => (
-        <div className="card-image" key={img.id} >
-          <LazyLoad height={200} offset={100} className="lazy">
-            <img className="image_css" src={img.image} alt={img.description} data-aos="fade-up" />
-          </LazyLoad>
-          <div className="overlay">
-            <section>
-              <h4>{img.description}</h4>
-              <br />
-              <section className="container_profile">
-                <SewingPinFilledIcon style={{ color: "red" }} /> &nbsp;
-                <a href={img.mapsLocal} target="_blank" className="profile-link">
-                  {img.local}
+            <div className="overlay">
+              <section>
+                <h4>{img.description}</h4>
+                <br />
+                <section className="container_profile">
+                  <SewingPinFilledIcon style={{ color: "red" }} /> &nbsp;
+                  <a
+                    href={img.mapsLocal}
+                    target="_blank"
+                    className="profile-link"
+                  >
+                    {img.local}
+                  </a>
+                </section>
+              </section>
+
+              <section className="profine_download">
+                <section className="container_profile">
+                  <img
+                    src={img.imagePhotographer}
+                    alt="Photographer profile"
+                    className="img_profile"
+                  />
+                  <a
+                    href={img.profile}
+                    target="_blank"
+                    className="profile-link"
+                  >
+                    {img.photographer}
+                  </a>
+                </section>
+                <a href={img.image} className="download_button" download>
+                  Download &nbsp; <DownloadIcon />
                 </a>
               </section>
-            </section>
-
-            <section className="profine_download">
-              <section className="container_profile">
-                <img
-                  src={img.imagePhotographer}
-                  alt="Photographer profile"
-                  className="img_profile"
-                />
-                <a href={img.profile} target="_blank" className="profile-link">
-                  {img.photographer}
-                </a>
-              </section>
-              <a href={img.image} className="download_button" download>
-                Download &nbsp; <DownloadIcon />
-              </a>
-            </section>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </LazyLoad>
     </div>
   );
 }
