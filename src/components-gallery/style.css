@@ -100,10 +100,12 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 0.5rem;
+  transition: 0.6s;
 }
 
 .lazy:hover> :not(:hover){
-  opacity: 0.8;
+  filter: blur(1px);
+  transition: 0.6s;
 }
 
 .image_css {
